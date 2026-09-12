@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pengyu Wang — Computer Science master's student at Fudan University; B.S. in Software Engineering from Jilin University." />
+  <title>Pengyu Wang · Academic Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --ink: #11110f;
+      --paper: #f0eee8;
+      --muted: #807e76;
+      --line: rgba(17, 17, 15, 0.16);
+      --signal: #df5c3b;
+      --signal-deep: #b8432c;
+      --soft: #d8d4ca;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Manrope', 'Noto Sans SC', 'Microsoft YaHei', sans-serif;
+      --mono: 'DM Mono', 'SFMono-Regular', Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .page-shell { max-width: 1480px; margin: 0 auto; padding: 0 42px; }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 84px;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    .wordmark { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.02em; }
+    .wordmark-mark { width: 11px; height: 11px; background: var(--signal); border-radius: 50%; box-shadow: 0 0 0 5px rgba(223, 92, 59, .12); }
+    .nav { display: flex; gap: 32px; align-items: center; color: #5d5b55; }
+    .nav a { position: relative; padding: 7px 0; transition: color .25s ease; }
+    .nav a::after { content: ''; position: absolute; left: 0; right: 100%; bottom: 0; height: 1px; background: var(--signal); transition: right .3s ease; }
+    .nav a:hover { color: var(--ink); }
+    .nav a:hover::after { right: 0; }
+    .status { display: flex; gap: 9px; align-items: center; color: var(--muted); font-family: var(--mono); font-size: 10px; text-transform: uppercase; }
+    .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #74a74b; }
+
+    .hero { min-height: calc(100svh - 84px); display: grid; grid-template-columns: minmax(0, .94fr) minmax(360px, 1.06fr); gap: 68px; align-items: center; padding: 72px 0 76px; }
+    .hero-copy { max-width: 620px; padding-left: clamp(0px, 3vw, 44px); }
+    .eyebrow { display: flex; align-items: center; gap: 14px; margin: 0 0 28px; color: var(--signal-deep); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 34px; height: 1px; background: var(--signal); }
+    h1 { margin: 0; max-width: 590px; font-size: clamp(58px, 8vw, 128px); line-height: .94; letter-spacing: -.085em; font-weight: 800; }
+    h1 .surname { display: block; font-family: var(--serif); font-style: italic; font-weight: 400; letter-spacing: -.07em; }
+    .name-cn { margin: 17px 0 0; color: var(--signal-deep); font-family: var(--mono); font-size: 12px; letter-spacing: .14em; }
+    .hero-lead { max-width: 480px; margin: 34px 0 0; color: #4d4a44; font-size: 17px; line-height: 1.7; }
+    .hero-lead strong { color: var(--ink); font-weight: 700; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 46px; padding: 0 18px; border: 1px solid var(--ink); font-size: 12px; font-weight: 700; letter-spacing: .02em; transition: transform .25s ease, background .25s ease, color .25s ease; }
+    .button:hover { transform: translateY(-3px); }
+    .button-primary { color: var(--paper); background: var(--ink); }
+    .button-primary:hover { background: var(--signal); border-color: var(--signal); }
+    .button-ghost { border-color: var(--line); color: #5e5b54; }
+    .button-ghost:hover { color: var(--ink); border-color: var(--ink); }
+    .hero-meta { display: flex; gap: 36px; margin-top: 52px; padding-top: 17px; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--mono); font-size: 10px; line-height: 1.5; text-transform: uppercase; }
+    .hero-meta span { display: block; margin-top: 7px; color: var(--ink); font-family: var(--sans); font-size: 13px; font-weight: 700; text-transform: none; }
+
+    .hero-visual { position: relative; min-height: min(680px, 68vh); background: #2d2c27; overflow: hidden; }
+    .hero-visual::before { content: ''; position: absolute; inset: 0; background: rgba(0, 0, 0, .24); z-index: 1; }
+    .hero-image { width: 100%; height: 100%; min-height: inherit; object-fit: cover; object-position: 52% 52%; filter: saturate(.82) contrast(1.06); transform: scale(1.04); transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+    .hero-visual:hover .hero-image { transform: scale(1.09); }
+    .visual-label { position: absolute; z-index: 2; right: 22px; bottom: 20px; color: rgba(240, 238, 232, .75); font-family: var(--mono); font-size: 10px; letter-spacing: .08em; writing-mode: vertical-rl; }
+    .visual-stamp { position: absolute; z-index: 2; left: 24px; top: 23px; display: flex; align-items: center; gap: 8px; color: rgba(240, 238, 232, .86); font-family: var(--mono); font-size: 10px; text-transform: uppercase; }
+    .visual-stamp::before { content: ''; width: 6px; height: 6px; border: 1px solid var(--signal); border-radius: 50%; }
+    .scroll-cue { position: absolute; z-index: 2; bottom: 19px; left: 24px; display: flex; align-items: center; gap: 9px; color: rgba(240, 238, 232, .86); font-family: var(--mono); font-size: 10px; text-transform: uppercase; }
+    .scroll-cue i { display: block; width: 26px; height: 1px; background: var(--signal); }
+
+    .section { border-top: 1px solid var(--line); padding: 108px 0 120px; }
+    .section-heading { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: start; margin-bottom: 64px; }
+    .section-kicker { margin: 4px 0 0; color: var(--signal-deep); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+    h2 { max-width: 760px; margin: 0; font-size: clamp(32px, 4.4vw, 64px); line-height: 1.03; letter-spacing: -.07em; }
+    h2 em { font-family: var(--serif); font-weight: 400; }
+
+    .about-grid { display: grid; grid-template-columns: 1.04fr .96fr; gap: 90px; align-items: start; }
+    .about-copy { font-size: 18px; line-height: 1.72; color: #504d47; }
+    .about-copy p { margin: 0 0 18px; }
+    .about-copy strong { color: var(--ink); }
+    .focus-list { border-top: 1px solid var(--line); }
+    .focus-item { display: grid; grid-template-columns: 42px 1fr; gap: 16px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .focus-num { color: var(--signal); font-family: var(--mono); font-size: 11px; }
+    .focus-title { margin: 0 0 7px; font-size: 17px; letter-spacing: -.03em; }
+    .focus-desc { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+    .timeline { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+    .timeline-item { display: grid; grid-template-columns: 140px 1fr; gap: 32px; padding: 26px 0; border-top: 1px solid var(--line); }
+    .timeline-item:last-child { border-bottom: 1px solid var(--line); }
+    .timeline-year { color: var(--muted); font-family: var(--mono); font-size: 11px; line-height: 1.4; }
+    .timeline-main h3 { margin: 0 0 9px; font-size: 22px; letter-spacing: -.04em; }
+    .timeline-main p { margin: 0; color: #66625b; font-size: 14px; line-height: 1.65; }
+    .timeline-tag { display: inline-block; margin-top: 14px; color: var(--signal-deep); font-family: var(--mono); font-size: 10px; text-transform: uppercase; }
+
+    .contact { display: grid; grid-template-columns: 1.1fr .9fr; align-items: end; gap: 60px; padding-bottom: 74px; }
+    .contact h2 { max-width: 600px; }
+    .contact-copy { margin: 23px 0 0; max-width: 440px; color: #66625b; font-size: 15px; line-height: 1.65; }
+    .contact-links { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; justify-self: end; }
+    .contact-link { display: inline-flex; align-items: center; gap: 10px; font-family: var(--mono); font-size: 11px; border-bottom: 1px solid var(--line); padding-bottom: 8px; transition: color .2s ease, border-color .2s ease; }
+    .contact-link:hover { color: var(--signal-deep); border-color: var(--signal); }
+    .footer { display: flex; justify-content: space-between; align-items: center; padding: 20px 0 26px; border-top: 1px solid var(--line); color: var(--muted); font-family: var(--mono); font-size: 10px; }
+
+    .reveal { transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+    body.reveal-ready .reveal { opacity: 0; transform: translateY(22px); }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: .1s; } .delay-2 { transition-delay: .2s; } .delay-3 { transition-delay: .3s; }
+    @media (max-width: 900px) {
+      .page-shell { padding: 0 22px; }
+      .topbar { height: 74px; }
+      .nav { display: none; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 44px; padding: 58px 0 74px; }
+      .hero-copy { padding-left: 0; }
+      h1 { font-size: clamp(57px, 17vw, 92px); }
+      .hero-visual { min-height: 62svh; }
+      .section { padding: 78px 0 88px; }
+      .section-heading, .about-grid, .timeline, .contact { grid-template-columns: 1fr; gap: 34px; }
+      .section-heading { margin-bottom: 44px; }
+      .contact-links { justify-self: start; }
+    }
+    @media (max-width: 520px) {
+      .status { font-size: 9px; }
+      .status-dot { width: 6px; height: 6px; }
+      .hero-lead { font-size: 15px; }
+      .hero-actions .button { width: 100%; }
+      .hero-meta { gap: 18px; flex-wrap: wrap; margin-top: 37px; }
+      .hero-visual { min-height: 58svh; }
+      .timeline-item { grid-template-columns: 1fr; gap: 10px; }
+      .timeline-year { font-size: 10px; }
+      .footer { align-items: flex-start; flex-direction: column; gap: 9px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="wordmark" href="#top" aria-label="回到首页"><span class="wordmark-mark"></span><span>WANG PENGYU</span></a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="status"><span class="status-dot"></span><span>ACADEMIC PROFILE</span></div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow reveal">Fudan University · Shanghai</p>
+          <h1 id="hero-title" class="reveal delay-1"><span class="surname">Pengyu</span> Wang</h1>
+          <p class="name-cn reveal delay-1">王鹏宇</p>
+          <p class="hero-lead reveal delay-2">Computer Science master's student at <strong>Fudan University</strong>, with a B.S. in Software Engineering from <strong>Jilin University</strong>. I study how intelligent software can become more reliable, useful, and understandable.</p>
+          <div class="hero-actions reveal delay-3">
+            <a class="button button-primary" href="#research">Research interests <i data-lucide="arrow-down-right" width="15" height="15"></i></a>
+            <a class="button button-ghost" href="#education">Education <i data-lucide="arrow-down-right" width="15" height="15"></i></a>
+          </div>
+          <div class="hero-meta reveal delay-3">
+            <div>Degree<span>M.S. in Computer Science</span></div>
+            <div>Focus<span>Systems · Machine Learning</span></div>
+            <div>Location<span>Shanghai, China</span></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal delay-2">
+          <img class="hero-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=85" alt="芯片与电路板的近景" />
+          <div class="visual-stamp">Selected signal / 01</div>
+          <div class="visual-label">CURIOUS BY DEFAULT</div>
+          <div class="scroll-cue"><i></i> Scroll to explore</div>
+        </div>
+      </section>
+
+      <section class="section" id="research" aria-labelledby="about-title">
+        <div class="section-heading reveal">
+          <p class="section-kicker">01 / Research</p>
+          <h2 id="about-title">Building software that is<br /><em>clear, capable, and dependable.</em></h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy reveal delay-1">
+            <p>I am a computer science student and hands-on engineer in training. My interests sit at the intersection of <strong>systems, machine learning, and software engineering</strong>.</p>
+            <p>From the foundations of software engineering to graduate study in computer science, I care about turning complex technical ideas into systems that can be trusted in practice.</p>
+          </div>
+          <div class="focus-list reveal delay-2" aria-label="Research interests">
+            <div class="focus-item"><div class="focus-num">01</div><div><h3 class="focus-title">Systems &amp; Infrastructure</h3><p class="focus-desc">Scalable, observable systems that remain dependable as they evolve.</p></div></div>
+            <div class="focus-item"><div class="focus-num">02</div><div><h3 class="focus-title">Machine Learning</h3><p class="focus-desc">Connecting models, data, and real-world use cases with rigor.</p></div></div>
+            <div class="focus-item"><div class="focus-num">03</div><div><h3 class="focus-title">Human-centered Software</h3><p class="focus-desc">Technical work that stays legible and useful to the people it serves.</p></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="education" aria-labelledby="education-title">
+        <div class="section-heading reveal">
+          <p class="section-kicker">02 / Education</p>
+          <h2 id="education-title">A foundation in software,<br /><em>now growing into research.</em></h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal delay-1"><div class="timeline-year">2024 — PRESENT</div><div class="timeline-main"><h3>Fudan University</h3><p>M.S. in Computer Science<br />Graduate study focused on deepening research and engineering practice.</p><span class="timeline-tag">Graduate studies · Shanghai</span></div></div>
+          <div class="timeline-item reveal delay-2"><div class="timeline-year">2020 — 2024</div><div class="timeline-main"><h3>Jilin University</h3><p>B.S. in Software Engineering<br />Built a strong foundation across software development, computer science, and collaborative engineering.</p><span class="timeline-tag">Undergraduate · Changchun</span></div></div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact" aria-labelledby="contact-title">
+        <div class="reveal"><p class="section-kicker">03 / Contact</p><h2 id="contact-title">Research, ideas,<br /><em>and thoughtful collaboration.</em></h2><p class="contact-copy">For academic conversations, collaboration, or questions about my work, please reach out by email.</p></div>
+        <div class="contact-links reveal delay-2">
+          <span class="contact-link">Email / to be added</span>
+          <a class="contact-link" href="#top">Back to top <i data-lucide="arrow-up" width="15" height="15"></i></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer"><span>© 2026 PENGYU WANG</span><span>Academic profile</span></footer>
+  </div>
+  <script>
+    document.body.classList.add('reveal-ready');
+    if (window.lucide) lucide.createIcons();
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach((item) => observer.observe(item));
+  </script>
+</body>
+</html>
